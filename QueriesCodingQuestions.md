@@ -4,7 +4,7 @@ You have been asked to find the job titles of the highest-paid employees. Your o
 
 Tables: *worker, title*
 ## PostgreSQL Solution
-```postgresql
+```sql
 -- Create a temporary table that is the inner join of worker and title tables
 WITH workerTitle AS (
     SELECT salary, worker_title
@@ -37,7 +37,7 @@ workerTitle[workerTitle['salary'] == workerTitle['salary'].max()][['worker_title
 ## Salaries Differences
 Write a query that calculates the difference between the highest salaries found in the marketing and engineering departments. Output just the absolute difference in salaries.
 ## PostgreSQL Solution
-```postgresql
+```sql
 -- Create a temporary table that is the inner join of db_employee and title db_dept
 WITH empDep AS (
     SELECT *
@@ -75,7 +75,7 @@ Write a query that returns the number of unique users per client per month.
 
 Table: *fact_events*
 ## PostgreSQL Solution
-```postgresql
+```sql
 -- Extract the month from the datetime field and count each unique user_id
 SELECT client_id, EXTRACT(MONTH FROM time_id) AS month, COUNT(DISTINCT user_id) AS users
 FROM fact_events
@@ -103,7 +103,7 @@ Output share of US users that are active. Active users are the ones with an "ope
 
 Table: *fb_active_users*
 ## PostgreSQL Solution
-```postgresql
+```sql
 SELECT
     -- Because the division (/) in PostgreSQL doesn't output a decimal, I use CAST for the conversion
     -- Conditional statement using CASE to select USA active users
